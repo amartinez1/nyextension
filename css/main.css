@@ -2,7 +2,7 @@
 	width: 400px;
 }
 .logo{
-	height: 31%;
+	height: 42px;
 }
 .logo-container{
 	left: 0;
@@ -10,5 +10,13 @@
 	text-align: center;
 	margin: auto;
 	width: 100%;
-	margin-top: 6px;
+	margin-top: 3px;
+}
+.article-img img{
+	width: 102px;
+}
+
+.header-title {
+	margin-top:-2px;
+	text-align: center;
 }

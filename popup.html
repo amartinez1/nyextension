@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href= "css/main.css">
 		<link rel="stylesheet" href= "css/bootstrap.css">
+		<link rel="stylesheet" href= "css/loader.css">
 		<title> New York Times Extention</title>
 
 	</head>
@@ -17,10 +18,42 @@
 			</div>
 		</nav>
 		<div class="container">
-			<h4 id="news">News</h2>
+			<div class="row">
+				<div id="app">
+					<div id="app-container" class="col-md-12">
+						<div class="ui segment">
+						  <div class="ui active inverted dimmer">
+						    <div class="ui text loader">Loading Top Stories...</div>
+						  </div>
+						  <p></p>
+						</div>
+						<script type="text/template" id="stories" type="text/x-handlebars-template">
+						<h4 class="header-title">TOP STORIES</h4>
+						{{#each articles}}
+						<div class="row">
+							<div class="article-img col-xs-4">
+								<img class="" src="{{attributes.imgUrl}}">
+							</div>
+							<div class="article-info col-xs-8">
+							    <h5> <strong><a href="{{attributes.url}}" target="_blank">{{attributes.title}}</a></strong></h5>
+							    <small> {{attributes.section}}</small>
+							    </br>
+							    <small> {{attributes.author}}</small>
+						    </div>						    
+						</div>
+						<hr>
+						{{/each}}
+						</script>
+					</div>
+				</div>
+			</div>
 		</div>
-		<script src="js/jquery-2.1.4.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vendor/jquery-2.1.4.min.js"></script>
+		<script src="js/vendor/underscore1.8.3.min.js"></script>
+		<script src="js/vendor/backbone1.2.3.min.js"></script>
+		<script src="js/vendor/handlebars-v4.0.5.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/app.js"></script>
 		<script src="js/popup.js"></script>
 	</body>
 </html>
