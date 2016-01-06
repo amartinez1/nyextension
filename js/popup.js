@@ -33,13 +33,16 @@ $(document).ready(function() {
 	var HomeArticlesView = Backbone.View.extend({
 		articles: undefined,
 		el: '#app-container',
+		events: {
+			'click .story-container': 'goToArticle'
+		},
 
 		initialize: function() {
 			var self = this;
 			var HomeArticles = new HomeArticleList();
 			HomeArticles.fetch({
 				success: function(collection, response, options) {
-					self.articles = collection.models;
+					self.articles = collection;
 					self.render();					
 				},
 
@@ -52,8 +55,15 @@ $(document).ready(function() {
 		render: function() {
 			var source = $('#stories').html();
 			var template = Handlebars.compile(source);
-			var html = template({articles: this.articles});
+			var html = template({articles: this.articles.models});
 			this.$el.html(html);
+		},
+
+		goToArticle: function(e) {
+			var currentTarget = e.currentTarget;
+			var cid = $(currentTarget).data('story-id');
+			var article = this.articles.get(cid);
+			window.open(article.attributes.url);
 		}
 	});
 

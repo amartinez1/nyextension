@@ -1,3 +1,6 @@
+a{
+	color: #000 !important;
+}
 .container{
 	width: 400px;
 }
@@ -19,4 +22,19 @@
 .header-title {
 	margin-top:-2px;
 	text-align: center;
+}
+.story-container:hover{
+	background-color: #F5F5F5;
+	cursor:pointer;
+}
+.ui.inverted.dimmer .ui.loader {
+	margin-top: 10px;
+}
+
+.grey small{
+	color: grey;
+}
+
+.bold{
+	font-weight: 700;
 }
