@@ -1,6 +1,21 @@
 $(document).ready(function() {
 	//Model Definition
 	var HomeArticle = Backbone.Model.extend({
+		parse: function(response) {
+			var homeArticle = {};
+			homeArticle.section = response.section;
+			homeArticle.title = response.title;
+			homeArticle.url = response.url;
+			homeArticle.author = response.byline;
+
+			if (response.multimedia !== undefined && response.multimedia !== "") {
+				homeArticle.imgUrl = response.multimedia[1].url;
+			} else {
+				homeArticle.imgUrl = 'img/default-news-img.png';
+			}
+
+			return homeArticle;
+		}
 	});
 
 	//Collection Definition
@@ -9,22 +24,8 @@ $(document).ready(function() {
 		url: URL_ROOT +'topstories/v1/home.json?api-key='+ TOP_STORIES_KEY,
 		parse: function( data, options) {
 			var homeArticles = [];
-			_.each(data.results, function(article) {
-				var homeArticle = {};
-				homeArticle.section = article.section;
-				homeArticle.title = article.title;
-				homeArticle.url = article.url;
-				homeArticle.author = article.byline;
-
-				if (article.multimedia !== undefined && article.multimedia !== "") {
-					homeArticle.imgUrl = article.multimedia[1].url;
-				} else {
-					homeArticle.imgUrl = 'img/default-news-img.png';
-				}
-
-				homeArticles.push(homeArticle);
-			});
-
+			homeArticles = data.results;
+			homeArticles.copyright = data.copyright;
 			return homeArticles;
 		}
 	});

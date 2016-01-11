@@ -1,9 +1,10 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<link rel="stylesheet" href= "css/main.css">
 		<link rel="stylesheet" href= "css/bootstrap.css">
 		<link rel="stylesheet" href= "css/loader.css">
+		<link rel="stylesheet" href= "css/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Lora:700|Open+Sans' rel='stylesheet' type='text/css'>
 		<title> New York Times Extention</title>
 
 	</head>
@@ -29,20 +30,23 @@
 						</div>
 						<script type="text/template" id="stories" type="text/x-handlebars-template">
 						<h4 class="header-title">TOP STORIES</h4>
-						{{#each articles}}
-						<hr>						
-						<div class="row story-container" data-story-id="{{cid}}">
-							<div class="article-img col-xs-4">
-								<img src="{{attributes.imgUrl}}">
+						<hr>
+						<div class="stories-container">
+							{{#each articles}}						
+							<div class="row story-container" data-story-id="{{cid}}">
+								<div class="article-img col-xs-4">
+									<img src="{{attributes.imgUrl}}">
+								</div>
+								<div class="article-info col-xs-8 grey">
+								    <h5> <strong><a href="{{attributes.url}}" target="_blank">{{attributes.title}}</a></strong></h5>
+								    <small class="bold"> {{attributes.section}}</small>
+								    </br>
+								    <small> {{attributes.author}}</small>
+							    </div>
 							</div>
-							<div class="article-info col-xs-8 grey">
-							    <h5> <strong><a href="{{attributes.url}}" target="_blank">{{attributes.title}}</a></strong></h5>
-							    <small class="bold"> {{attributes.section}}</small>
-							    </br>
-							    <small> {{attributes.author}}</small>
-						    </div>
-						</div>
-						{{/each}}
+							<hr>
+							{{/each}}
+						<div>
 						</script>
 					</div>
 				</div>
