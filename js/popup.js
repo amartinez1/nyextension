@@ -21,11 +21,10 @@ $(document).ready(function() {
 	//Collection Definition
 	var HomeArticleList	= Backbone.Collection.extend({
 		model: HomeArticle,
-		url: URL_ROOT +'topstories/v1/home.json?api-key='+ TOP_STORIES_KEY,
-		parse: function( data, options) {
+		url: URL_ROOT + 'topstories/v1/home.json?api-key=' + TOP_STORIES_KEY,
+		parse: function(data, options) {
 			var homeArticles = [];
 			homeArticles = data.results;
-			homeArticles.copyright = data.copyright;
 			return homeArticles;
 		}
 	});
@@ -44,11 +43,12 @@ $(document).ready(function() {
 			HomeArticles.fetch({
 				success: function(collection, response, options) {
 					self.articles = collection;
+					self.articles.copyright = response.copyright;
 					self.render();					
 				},
 
 				error: function(collection, response, options) {
-
+					// nothing?
 				}
 			});
 		},
@@ -56,7 +56,7 @@ $(document).ready(function() {
 		render: function() {
 			var source = $('#stories').html();
 			var template = Handlebars.compile(source);
-			var html = template({articles: this.articles.models});
+			var html = template({articles: this.articles});
 			this.$el.html(html);
 		},
 

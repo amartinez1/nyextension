@@ -57,6 +57,19 @@ hr {
 	color: grey;
 }
 
+.light-grey{
+	color: #C7C7C7;
+}
+
 .bold{
 	font-weight: 700;
+}
+
+.copyright{
+	margin-top: 9px;
+}
+
+.spacing{
+	margin-bottom: 13px;
+    margin-top: 13px;
 }
