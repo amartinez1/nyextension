@@ -1,6 +1,9 @@
 $(document).ready(function() {
-	var TOP_STORIES_URL = '*********/topstories/';
+	//Configuration
+	var TOP_STORIES_URL = 'http://api.nytimes.com/svc/topstories/v1/home.json?api-key=YOUR-API-KEY';
+	var doCustomMarshalling = false;
 
+	//Custom Response extraction for the resposne
 	function extractResponseInfo(response){
 		//Because the name of the response changes constantly, extract the first attribute of the response
 		//then use that name to access the results
@@ -40,7 +43,12 @@ $(document).ready(function() {
 		url: TOP_STORIES_URL,
 		parse: function(data, options) {
 			var homeArticles = [];
-			var response = extractResponseInfo(data);
+			var response = data;
+
+			if (doCustomMarshalling) {
+				 response = extractResponseInfo(data);
+			}
+
 			homeArticles = response.results;
 			return homeArticles;
 		}
@@ -60,7 +68,11 @@ $(document).ready(function() {
 			HomeArticles.fetch({
 				success: function(collection, response, options) {
 					self.articles = collection;
-					self.articles.copyright = extractResponseInfo(response).copyright;
+					self.articles.copyright = response.copyright;
+
+					if (doCustomMarshalling) {
+						 self.articles.copyright = extractResponseInfo(response).copyright;
+					}
 					self.render();					
 				},
 
