@@ -1,7 +1,9 @@
 $(document).ready(function() {
-	var TOP_STORIES_URL = '***********************************************/topstories/';
+	var TOP_STORIES_URL = '*********/topstories/';
 
 	function extractResponseInfo(response){
+		//Because the name of the response changes constantly, extract the first attribute of the response
+		//then use that name to access the results
 		var extractedResponse;
 
 		if(response !== undefined) {
@@ -38,9 +40,6 @@ $(document).ready(function() {
 		url: TOP_STORIES_URL,
 		parse: function(data, options) {
 			var homeArticles = [];
-
-			//Because the name of the response changes constantly, extract the first attribute of the response
-			//then use that name to access the results
 			var response = extractResponseInfo(data);
 			homeArticles = response.results;
 			return homeArticles;
