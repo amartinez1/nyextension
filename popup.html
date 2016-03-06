@@ -4,7 +4,8 @@
 		<link rel="stylesheet" href= "css/bootstrap.css">
 		<link rel="stylesheet" href= "css/loader.css">
 		<link rel="stylesheet" href= "css/main.css">
-		<link href='https://fonts.googleapis.com/css?family=Lora:700|Open+Sans' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Lora:700|Open+Sans" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
 		<title> New York Times Extention</title>
 
 	</head>
@@ -47,8 +48,16 @@
 							<hr>
 							{{/each}}
 						<div>
-						<div class="copyright light-grey">
+						<div class="copyright light-grey ">
 							<small>{{articles.copyright}}</small>
+							<hr>
+							<div class="medium-grey">
+								<small>
+									<a  target="_blank" href="https://github.com/amartinez1/nyextension">
+										<i class="fa fa-github"></i> &nbsp;Source Code
+									</a>
+								</small>
+							</div>
 						</div>
 						</script>
 					</div>
@@ -60,7 +69,6 @@
 		<script src="js/vendor/backbone1.2.3.min.js"></script>
 		<script src="js/vendor/handlebars-v4.0.5.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/app.js"></script>
 		<script src="js/popup.js"></script>
 	</body>
 </html>

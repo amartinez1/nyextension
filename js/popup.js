@@ -1,4 +1,18 @@
 $(document).ready(function() {
+	var TOP_STORIES_URL = '***********************************************/topstories/';
+
+	function extractResponseInfo(response){
+		var extractedResponse;
+
+		if(response !== undefined) {
+			var responseName = Object.keys(response)[0];
+			 extractedResponse = response[responseName];
+		} else {
+			//nothing?
+		}
+		return extractedResponse;
+	}
+
 	//Model Definition
 	var HomeArticle = Backbone.Model.extend({
 		parse: function(response) {
@@ -21,10 +35,14 @@ $(document).ready(function() {
 	//Collection Definition
 	var HomeArticleList	= Backbone.Collection.extend({
 		model: HomeArticle,
-		url: URL_ROOT + 'topstories/v1/home.json?api-key=' + TOP_STORIES_KEY,
+		url: TOP_STORIES_URL,
 		parse: function(data, options) {
 			var homeArticles = [];
-			homeArticles = data.results;
+
+			//Because the name of the response changes constantly, extract the first attribute of the response
+			//then use that name to access the results
+			var response = extractResponseInfo(data);
+			homeArticles = response.results;
 			return homeArticles;
 		}
 	});
@@ -43,7 +61,7 @@ $(document).ready(function() {
 			HomeArticles.fetch({
 				success: function(collection, response, options) {
 					self.articles = collection;
-					self.articles.copyright = response.copyright;
+					self.articles.copyright = extractResponseInfo(response).copyright;
 					self.render();					
 				},
 
