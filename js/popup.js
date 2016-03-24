@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	//Configuration
-	var TOP_STORIES_URL = 'http://api.nytimes.com/svc/topstories/v1/home.json?api-key=YOUR-API-KEY';
-	var doCustomMarshalling = false;
+	var TOP_STORIES_URL = 'http://nymanager-ncoreapps.rhcloud.com/topstories/';
+	var doCustomMarshalling = true;
 
 	//Custom Response extraction for the resposne
 	function extractResponseInfo(response){
