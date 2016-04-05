@@ -5,6 +5,6 @@ Get the latest top stories from New York Times. Currently it only has support fo
 Install from Chrome Store [here](https://chrome.google.com/webstore/detail/new-york-times-extension/mjkfcmbeolcdlhlajooggkjnlmmekijm?hl=es-419)
 
 ##Screenshots:
-![alt text](https://github.com/amartinez1/nyextension/blob/master/img/screen-shot1.png "screenshot")
+![alt text](https://github.com/amartinez1/nyextension/blob/master/img/screenshot-1.jpg "screenshots")
 
 
